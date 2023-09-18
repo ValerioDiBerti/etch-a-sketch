@@ -1,0 +1,30 @@
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+}
+
+.grid {
+    width: 500px;
+    height: 500px;
+    border: 5px solid black;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ui {
+    margin-left: 20px;
+}
+.ui > * {
+    height: 50px;
+    width: 100px;
+}
+
+.grid > div {
+    /* width: calc(100%/100);
+    height: calc(100%/100); */
+    /* border: 1px solid black; */
+}
