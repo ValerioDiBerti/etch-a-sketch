@@ -1,6 +1,5 @@
 let gridSize = 16;
 let blocks;
-
 const grid = document.querySelector('.grid')
 
 makeGrid();
@@ -29,9 +28,7 @@ function makeGrid() {
     })
 }
 
-
-
-
+// Erase button
 const eraseButton = document.querySelector('.erase');
 eraseButton.addEventListener('click', () => {
     blocks.forEach(block => {
@@ -39,8 +36,12 @@ eraseButton.addEventListener('click', () => {
     })
 })
 
+// Grid size button
 const gridSizeButton = document.querySelector('.grid-size');
 gridSizeButton.addEventListener('click', () => {
-    gridSize = parseInt(prompt('grid size?'))
+    do {
+        if (gridSize > 100) alert("please enter a grid size <= 100");
+        gridSize = parseInt(prompt('grid size? [1-100]'));
+    } while (gridSize > 100)
     makeGrid();
 })
