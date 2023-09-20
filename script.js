@@ -13,10 +13,10 @@ function makeGrid() {
     for (let i = 0; i < gridSize * gridSize; i++) {
         a = document.createElement('div');
         a.setAttribute("class", "block");
-        a.style.width = `calc(100%/${gridSize})`;
-        a.style.height = `calc(100%/${gridSize})`;
+        a.style.width = `${100/gridSize}%`;
+        a.style.height = `${100/gridSize}%`;
+        a.style.backgroundColor = 'rgb(255,255,255)';
         grid.appendChild(a)
-        console.log(a);
     }
     blocks = document.querySelectorAll('.block');
     draw();
@@ -25,13 +25,21 @@ function makeGrid() {
 // draw function
 function draw() {
     blocks.forEach(block => {
-        block.addEventListener('mouseenter', () => {
+        block.addEventListener('mouseenter', (e) => {
             if (currentMode === 'black') {
-                block.style.background = 'black';
+                block.style.backgroundColor = 'rgb(0,0,0)';
             }
             if (currentMode === 'rgb') {
-                let randomColor = Math.floor(Math.random()*16777215).toString(16);
-                block.style.background = '#' + randomColor;
+                let r = Math.floor(Math.random()*255);
+                let g = Math.floor(Math.random()*255);
+                let b = Math.floor(Math.random()*255);
+                block.style.backgroundColor = `rgb(${r},${g},${b})`;
+            }
+            if (currentMode === 'shading') {
+                let oldColor = block.style.backgroundColor.slice(4,-1).split(',');
+                let newColor = oldColor.map( value => {return value - 256/10});
+                // block.style.backgroundColor = `rgb(${(oldColor - [10,10,10]).join(', ')})`;
+                block.style.backgroundColor = `rgb(${newColor.join(', ')})`;
             }
         });
 
@@ -67,3 +75,9 @@ const blackButton = document.querySelector('.black');
 blackButton.addEventListener('click', () => {
     currentMode = 'black';
 });
+
+// Shading tool
+const shadingButton = document.querySelector('.shading');
+shadingButton.addEventListener('click', () => {
+    currentMode = 'shading';
+})
