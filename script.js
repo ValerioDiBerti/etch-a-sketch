@@ -50,7 +50,7 @@ function draw() {
 const eraseButton = document.querySelector('.erase');
 eraseButton.addEventListener('click', () => {
     blocks.forEach(block => {
-        block.style.background = 'white';
+        block.style.backgroundColor = 'rgb(255,255,255)';
     })
 });
 
