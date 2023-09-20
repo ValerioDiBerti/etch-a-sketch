@@ -1,4 +1,4 @@
-let gridSize = 16;
+let gridSize = 32;
 let blocks;
 const grid = document.querySelector('.grid')
 
