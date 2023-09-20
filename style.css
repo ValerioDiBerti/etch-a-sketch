@@ -17,6 +17,9 @@
 
 .ui {
     margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
 }
 .ui > * {
     height: 50px;
